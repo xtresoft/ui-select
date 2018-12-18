@@ -62,6 +62,21 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
         return true;
       };
 
+      // Fire onMatchSelect when a match is selected from ui-select-matches list.
+      ctrl.selectMatch = function(index) {
+        ctrl.activeMatchIndex = index;
+        var locals = {},
+        selectedMatch = $select.selected[index];
+
+        locals[$select.parserResult.itemName] = selectedMatch;
+
+        if($select.onMatchSelectCallback) {
+          $select.onMatchSelectCallback($scope, {
+            $item: selectedMatch,
+            $model: $select.parserResult.modelMapper($scope, locals)
+          });
+        }
+      };
 
     }],
     controllerAs: '$selectMultiple',
