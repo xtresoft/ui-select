@@ -5,7 +5,7 @@
       tabindex="-1"
       type="button"
       ng-disabled="$select.disabled"
-      ng-click="$selectMultiple.activeMatchIndex = $index;"
+      ng-click="$selectMultiple.selectMatch($index);"
       ng-class="{'btn-primary':$selectMultiple.activeMatchIndex === $index, 'select-locked':$select.isLocked(this, $index)}"
       ui-select-sort="$select.selected">
         <span class="close ui-select-match-close" ng-hide="$select.disabled" ng-click="$selectMultiple.removeChoice($index)">&nbsp;&times;</span>

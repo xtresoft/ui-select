@@ -1,6 +1,6 @@
 <div class="ui-select-match" data-value
      ng-repeat="$item in $select.selected track by $index"
-     ng-click="$selectMultiple.activeMatchIndex = $index;"
+     ng-click="$selectMultiple.selectMatch($index);"
      ng-class="{'active':$selectMultiple.activeMatchIndex === $index}"
      ui-select-sort="$select.selected">
   <span class="ui-select-match-item"

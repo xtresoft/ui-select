@@ -1,4 +1,4 @@
-uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
+uis.directive('uiSelectMatch', ['uiSelectConfig', '$parse', function(uiSelectConfig, $parse) {
   return {
     restrict: 'EA',
     require: '^uiSelect',
@@ -13,7 +13,7 @@ uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
       var theme = getAttribute(parent, 'theme') || uiSelectConfig.theme;
       var multi = angular.isDefined(getAttribute(parent, 'multiple'));
 
-      return theme + (multi ? '/match-multiple.tpl.html' : '/match.tpl.html');      
+      return theme + (multi ? '/match-multiple.tpl.html' : '/match.tpl.html');
     },
     link: function(scope, element, attrs, $select) {
       $select.lockChoiceExpression = attrs.uiLockChoice;
@@ -30,6 +30,7 @@ uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
 
       if($select.multiple){
         $select.sizeSearchInput();
+        $select.onMatchSelectCallback = $parse(attrs.onMatchSelect);
       }
 
     }

@@ -5,6 +5,7 @@
 -->
 <span class="ui-select-match">
   <li class="ui-select-match-item select2-search-choice" ng-repeat="$item in $select.selected track by $index"
+      ng-click="$selectMultiple.selectMatch($index);"
       ng-class="{'select2-search-choice-focus':$selectMultiple.activeMatchIndex === $index, 'select2-locked':$select.isLocked(this, $index)}"
       ui-select-sort="$select.selected">
       <span uis-transclude-append></span>
